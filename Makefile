@@ -2,7 +2,7 @@ NAME = fillit
 
 
 all:
-	gcc -o $(NAME) -Wall -Wextra -Werror main.c libft/libft.a get_next_line.c
+	gcc -o $(NAME) -Wall -Wextra -Werror main2.c libft/libft.a get_next_line.c -g
 clean:
 	rm -f $(NAME)
 re: clean all
