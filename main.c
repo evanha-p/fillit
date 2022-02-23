@@ -6,30 +6,12 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 14:36:01 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/23 14:29:57 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:49:34 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
-
-char	*ft_strdup(const char *source)
-{
-	char	*copy;
-	int		i;
-
-	i = 0;
-	copy = (char *)malloc(sizeof(*copy) * ft_strlen(source) + 1);
-	if (copy == NULL)
-		return (NULL);
-	while (source[i])
-	{
-		copy[i] = source[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
 
 char	**read_file(char *argv)
 {
