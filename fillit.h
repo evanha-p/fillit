@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:10:31 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/18 15:45:19 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/02/24 23:33:58 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <ctype.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef	struct	s_block
+{
+	int		arr[4][4];
+}		t_block;
 
 int	get_next_line(const int fd, char **line);
 

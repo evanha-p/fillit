@@ -1,52 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   main3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 15:56:19 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/24 22:20:21 by evanha-p         ###   ########.fr       */
+/*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
+/*   Updated: 2022/02/24 23:59:53 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int		**char2int(char **arr)
+void	print_shape(t_block shape)
 {
-	int		**temp;
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	while (y < 4)
+	{
+		while (x < 4)
+		{
+			ft_putchar(shape.arr[y][x]);
+			x++;
+		}
+		x = 0;
+		ft_putchar('\n');
+		y++;
+	}
+}
+
+t_block	*char2blocks(char **arr)
+{
+	t_block	*temp;
 	int		x;
 	int		y;
 	int		letter;
+	int		block;
+	int		i;
 
 	x = 0;
 	y = 0;
 	letter = 'A';
-	temp = (int **)malloc(sizeof(int *) * 125 + 1);
-	while (arr[y])
+	block = 0;
+	i = 0;
+	temp = (t_block	*)malloc(sizeof(t_block) * 26);
+	while (arr[i])
 	{
-		temp[y] = (int *)malloc(sizeof(int) * 4);
-		while(arr[y][x])
+		while (arr[i][x])
 		{
-			if (arr[y][x] == '.')
-				temp[y][x] = '.';
-			else if (arr[y][x] == '#')
-				temp[y][x] = letter;
+			if (arr[i][x] == '.')
+				temp[block].arr[y][x] = '.';
+			else
+				temp[block].arr[y][x] = letter;
 			x++;
 		}
 		x = 0;
-		if (!(arr[y][x]))
-		{
-			temp[y][x] = 5;
-			letter++;
-		}
 		y++;
+		if (!(arr[i][x]))
+		{
+			letter++;
+			block++;
+			y = 0;
+		}
+		i++;
 	}
-	temp[y] = NULL;
+	temp[block].arr[0][0] = 0;
 	return (temp);
 }
-
 char	**read_file(char *argv)
 {
 	int		i;
@@ -78,18 +101,17 @@ char	**read_file(char *argv)
 
 int		main(int argc, char **argv)
 {
-	char	**arr;
-	int		**numbarr;
-	int		x;
+	char		**arr;
+	t_block		*pieces;
 	int		y;
+	int		x;
 
-	x = 0;
 	y = 0;
+	x = 0;
 	if (argc != 2)
 		return (0);
 	arr = read_file(argv[1]);
-	numbarr = (int **)malloc(sizeof(int *) * 125);
-	numbarr = char2int(arr);
+	pieces = char2blocks(arr);
 	while (arr[y])
 	{
 		ft_putstr(arr[y]);
@@ -97,17 +119,12 @@ int		main(int argc, char **argv)
 		y++;
 	}
 	y = 0;
-	while (numbarr[y])
+
+	while (pieces[y].arr[0][0] != 0)
 	{
-		while (x < 4)
-		{
-			ft_putchar(numbarr[y][x]);
-			x++;
-		}
+		print_shape(pieces[y]);
 		ft_putchar('\n');
 		y++;
-		x = 0;
 	}
-	ft_putchar(numbarr[4][0]);
 	return (0);
 }
