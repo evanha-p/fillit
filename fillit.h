@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: esirnio <esirnio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:10:31 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/24 23:33:58 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:58:00 by esirnio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef	struct	s_block
 {
 	int		arr[4][4];
 }		t_block;
+
+typedef	struct	s_sol
+{
+	int		*arr;
+	int		size;
+}		t_solution;
 
 int	get_next_line(const int fd, char **line);
 

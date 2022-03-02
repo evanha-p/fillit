@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esirnio <esirnio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/24 23:59:53 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:58:08 by esirnio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,14 @@ char	**read_file(char *argv)
 			arr[i] = NULL;
 		i++;
 	}
+	close(fd);
 	return (arr);
 }
 
 int		main(int argc, char **argv)
 {
-	char		**arr;
-	t_block		*pieces;
+	char	**arr;
+	t_block	*pieces;
 	int		y;
 	int		x;
 
@@ -119,7 +120,6 @@ int		main(int argc, char **argv)
 		y++;
 	}
 	y = 0;
-
 	while (pieces[y].arr[0][0] != 0)
 	{
 		print_shape(pieces[y]);
