@@ -7,6 +7,7 @@ all:
 	make -C ./libft/
 clean:
 	rm -f $(NAME)
+	make fclean -C ./libft/
 re: clean all
 
 exec:
