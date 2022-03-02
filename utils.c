@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/02 15:22:40 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/02 17:24:04 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,50 @@ void	print_shape(t_block shape)
 	}
 }
 
-t_block	*char2blocks(char **arr)
+t_var	set_values(void)
+{
+	t_var	var;
+
+	var.i = 0;
+	var.x = 0;
+	var.y = 0;
+	var.letter = 'A';
+	return (var);
+}
+
+t_block	*char2list(char **arr)
 {
 	t_block	*temp;
-	int		x;
-	int		y;
-	int		letter;
-	int		block;
-	int		i;
+	t_block	*next;
+	t_block	*head;
+	t_var	var;
 
-	x = 0;
-	y = 0;
-	letter = 'A';
-	block = 0;
-	i = 0;
-	temp = (t_block	*)malloc(sizeof(t_block) * 26);
-	while (arr[i])
+	var = set_values();
+	temp = (t_block *)malloc(sizeof(t_block));
+	head = temp;
+	while (arr[var.i])
 	{
-		while (arr[i][x])
+		while (arr[var.i][var.x])
 		{
-			if (arr[i][x] == '.')
-				temp[block].arr[y][x] = '.';
+			if (arr[var.i][var.x] == '.')
+				temp->arr[var.y][var.x] = '.';
 			else
-				temp[block].arr[y][x] = letter;
-			x++;
+				temp->arr[var.y][var.x] = var.letter;
+			var.x++;
 		}
-		x = 0;
-		y++;
-		if (!(arr[i][x]))
+		var.x = 0;
+		var.y++;
+		if (!(arr[var.i][var.x]))
 		{
-			letter++;
-			block++;
-			y = 0;
+			var.letter++;
+			next = (t_block *)malloc(sizeof(t_block));
+			temp->next = next;
+			temp = next;
+			var.y = 0;
 		}
-		i++;
+		var.i++;
 	}
-	temp[block].arr[0][0] = 0;
+	temp->next = NULL;
+	temp = head;
 	return (temp);
 }

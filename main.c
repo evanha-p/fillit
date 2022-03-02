@@ -15,7 +15,6 @@
 int		main(int argc, char **argv)
 {
 	char	**arr;
-	t_block	*pieces;
 	t_block	*list;
 	int		y;
 	int		x;
@@ -25,7 +24,6 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	arr = read_file(argv[1]);
-	pieces = char2blocks(arr);
 	list = char2list(arr);
 	while (arr[y])
 	{
@@ -34,15 +32,6 @@ int		main(int argc, char **argv)
 		y++;
 	}
 	y = 0;
-	ft_putstr("####ARRAY####\n");
-	while (pieces[y].arr[0][0] != 0)
-	{
-		print_shape(pieces[y]);
-		ft_putchar('\n');
-		y++;
-	}
-	y = 0;
-	ft_putstr("####LIST####\n");
 	while(list->next)
 	{
 		print_shape(list[y]);
