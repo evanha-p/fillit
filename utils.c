@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main3.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/02/24 23:59:53 by evanha-p         ###   ########.fr       */
+/*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
+/*   Updated: 2022/03/02 15:22:40 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,62 +69,4 @@ t_block	*char2blocks(char **arr)
 	}
 	temp[block].arr[0][0] = 0;
 	return (temp);
-}
-char	**read_file(char *argv)
-{
-	int		i;
-	int		fd;
-	char	*line;
-	int		ret;
-	char	**arr;
-
-	i = 0;
-	ret = 1;
-	arr = (char **)malloc(sizeof(char *) * (125 + 1));
-	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
-	while (ret > 0)
-	{
-		ret = get_next_line(fd, &line);
-		if (ret == 1)
-		{
-			arr[i] = ft_strdup(line); 
-			free(line);
-		}
-		else
-			arr[i] = NULL;
-		i++;
-	}
-	return (arr);
-}
-
-int		main(int argc, char **argv)
-{
-	char		**arr;
-	t_block		*pieces;
-	int		y;
-	int		x;
-
-	y = 0;
-	x = 0;
-	if (argc != 2)
-		return (0);
-	arr = read_file(argv[1]);
-	pieces = char2blocks(arr);
-	while (arr[y])
-	{
-		ft_putstr(arr[y]);
-		ft_putchar('\n');
-		y++;
-	}
-	y = 0;
-
-	while (pieces[y].arr[0][0] != 0)
-	{
-		print_shape(pieces[y]);
-		ft_putchar('\n');
-		y++;
-	}
-	return (0);
 }

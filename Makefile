@@ -3,7 +3,7 @@ NAME = fillit
 
 all:
 	gcc -o $(NAME) -Wall -Wextra -Werror main.c \
-	libft/libft.a get_next_line.c -g
+	libft/libft.a get_next_line.c utils_list.c reader.c -g
 	make -C ./libft/
 clean:
 	rm -f $(NAME)
