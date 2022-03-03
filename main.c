@@ -6,7 +6,7 @@
 /*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/02 15:59:00 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:27:45 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int		main(int argc, char **argv)
 		ft_putchar('\n');
 		list = list->next;
 	}
+	ft_putnbr(false);
+	ft_putchar('\n');
+	ft_putnbr(true);
 	return (0);
 }
