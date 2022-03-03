@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:10:31 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/02 16:32:30 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:27:43 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ struct	s_block
 	int		arr[4][4];
 	t_block	*next;
 };
+
+typedef enum e_bool
+{
+	false,
+	true
+}	t_bool;
 
 int		get_next_line(const int fd, char **line);
 t_block	*char2list(char **arr);
