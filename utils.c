@@ -6,11 +6,54 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/19 16:51:41 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:25:24 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+t_bool	check_content(char *arr)
+{
+	int		i;
+
+	i = 0;
+	while (arr[i])
+	{
+		if (!(arr[i] == '#' || arr[i] == '.' || !(arr[i])))
+				return (false);
+		i++;
+	}
+	return (true);
+}
+
+t_bool	check_valid(char **arr)
+{
+	int		y;
+	int		i;
+
+	y = 0;
+	i = 0;
+	while (arr[i])
+	{
+		if (!(arr[i][0]))
+		{
+			if (y != 4)
+				return (false);
+			y = 0;
+			i++;
+			continue ;
+		}
+		if (!(ft_strlen(arr[i]) == 4 || ft_strlen(arr[i]) == 0))
+			return (false);
+		if (!(check_content(arr[i])))
+			return (false);
+		i++;
+		y++;
+	}
+	if (y != 0)
+		return (false);
+	return (true);
+}
 
 void	print_shape(t_block *shape)
 {
@@ -75,6 +118,8 @@ t_block	*char2list(char **arr)
 	t_block	*head;
 	t_var	*var;
 
+	if (!(check_valid(arr)))
+		ft_putstr("Kaak\n");
 	var = set_values();
 	temp = (t_block *)malloc(sizeof(t_block));
 	head = temp;
