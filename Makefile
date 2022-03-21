@@ -4,7 +4,8 @@ NAME = fillit
 all:
 	make -C ./libft/
 	gcc -o $(NAME) -Wall -Wextra -Werror main.c \
-	libft/libft.a get_next_line.c utils.c reader.c -g
+	libft/libft.a get_next_line.c utils.c reader.c \
+	solver.c -g
 clean:
 	rm -f $(NAME)
 	make fclean -C ./libft/
