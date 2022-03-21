@@ -6,13 +6,13 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/03 13:18:50 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:51:41 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_shape(t_block shape)
+void	print_shape(t_block *shape)
 {
 	int		x;
 	int		y;
@@ -23,7 +23,7 @@ void	print_shape(t_block shape)
 	{
 		while (x < 4)
 		{
-			ft_putchar(shape.arr[y][x]);
+			ft_putchar(shape->arr[y][x]);
 			x++;
 		}
 		x = 0;

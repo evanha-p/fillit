@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main3.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/03 14:27:45 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:18:35 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int		main(int argc, char **argv)
 	t_block	*list;
 	int		y;
 	int		x;
+	t_block	test_grid;
+	t_block *test_ptr;
+	t_var	*test_var_grid;
+	t_var	*test_var_tet;
+	t_bool	test_bool;
 
 	y = 0;
 	x = 0;
@@ -32,14 +37,36 @@ int		main(int argc, char **argv)
 		y++;
 	}
 	y = 0;
+
+	test_ptr = &test_grid;
+	while (y < 4)
+	{
+		while (x < 4)
+		{
+			if (x == 0)
+				test_grid.arr[y][x] = '#';
+			else
+				test_grid.arr[y][x] = '.';
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+	print_shape(test_ptr);
+	ft_putchar('\n');
+	test_var_grid = set_values();
+	test_var_tet = set_values();
+	test_bool = place_part(test_ptr->arr, list->arr, test_var_grid, test_var_tet);
+	print_shape(test_ptr);
+	ft_putstr("Boolian is: ");
+	ft_putnbr(test_bool);
+	ft_putchar('\n');
+	y = 0;
 	while(list->next)
 	{
-		print_shape(list[y]);
+		print_shape(list);
 		ft_putchar('\n');
 		list = list->next;
 	}
-	ft_putnbr(false);
-	ft_putchar('\n');
-	ft_putnbr(true);
 	return (0);
 }

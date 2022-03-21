@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:10:31 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/03 14:27:43 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:03:39 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ typedef enum e_bool
 }	t_bool;
 
 int		get_next_line(const int fd, char **line);
-t_block	*char2list(char **arr);
 char	**read_file(char *argv);
-void	print_shape(t_block shape);
+void	print_shape(t_block *shape);
+t_block *place_values(char **arr, t_block *temp, t_var *var);
+t_var	*set_values(void);
+t_block	*char2list(char **arr);
+t_bool	can_place_part(int grid[4][4], int terimino[4][4], t_var *grid_var, t_var *tet_var);
+t_bool	place_part(int	grid[4][4], int tetrimino[4][4], t_var *grid_var, t_var *tet_var);
 
 #endif
