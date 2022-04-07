@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:58:46 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/03/19 17:20:26 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:34:27 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ t_bool	place_part(int grid[4][4], int tetrimino[4][4], t_var *grid_var, t_var *t
 	}
 	return (true);
 }
+
