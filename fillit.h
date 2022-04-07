@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:10:31 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/04/04 15:38:48 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:09:28 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_bool	can_place_part(int grid[4][4], int tetrimino[4][4], t_var *grid_var, t_va
 t_bool	place_part(int	grid[4][4], int tetrimino[4][4], t_var *grid_var, t_var *tet_var);
 t_bool	check_valid(char **arr);
 t_bool	check_content(char *arr);
+t_bool	check_block(int arr[4][4]);
+t_bool	compare_block(int arr[4][4], int correct[4][4]);
 
 # define IU_BLOCK (int[4][4]) {\
 	{'#','.','.','.'},\

@@ -6,7 +6,7 @@
 /*   By: evanha-p <evanha-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 22:26:59 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/04/04 15:42:34 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:58:39 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int		main(int argc, char **argv)
 		return (0);
 	arr = read_file(argv[1]);
 	list = char2list(arr);
+	if (!list)
+	{
+		ft_putstr("VIRHE\n");
+		return (0);
+	}
 	while (arr[y])
 	{
 		ft_putstr(arr[y]);

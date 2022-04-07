@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/04/07 10:48:48 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/04/07 13:03:45 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ t_block	*place_values(char **arr, t_block *temp, t_var *var)
 	if (!(arr[var->i][var->x]))
 	{
 		shapes_to_top_left(temp, var);
+		if (!(check_block(temp->arr)))
+			return (NULL);
 		var->letter++;
 		next = (t_block *)malloc(sizeof(t_block));
 		temp->next = next;
@@ -138,13 +140,15 @@ t_block	*char2list(char **arr)
 	t_var	*var;
 
 	if (!(check_valid(arr)))
-		ft_putstr("Kaak\n");
+		return (NULL);
 	var = set_values();
 	temp = (t_block *)malloc(sizeof(t_block));
 	head = temp;
 	while (arr[var->i])
 	{
 		temp = place_values(arr, temp, var);
+		if (!temp)
+			return (NULL);
 		var->i++;
 	}
 	temp->next = NULL;
