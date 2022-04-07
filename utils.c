@@ -6,7 +6,7 @@
 /*   By: evanha-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:53:08 by evanha-p          #+#    #+#             */
-/*   Updated: 2022/04/04 16:00:16 by evanha-p         ###   ########.fr       */
+/*   Updated: 2022/04/07 10:48:48 by evanha-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	print_array(int **arr)
 	}
 }
 
-t_block	*shapes_to_top_left(t_block *block, t_var *var)
+void	shapes_to_top_left(t_block *block, t_var *var)
 {
-	t_block	*temp;
 	int	smallest_y;
 	int	smallest_x;
 	int	x;
@@ -64,15 +63,6 @@ t_block	*shapes_to_top_left(t_block *block, t_var *var)
 	smallest_x = 10;
 	x = 0;
 	y = 0;
-	temp = (t_block *)malloc(sizeof(t_block));
-	ft_putstr("TEST 1\n");
-	if (!temp)
-	{
-		free (temp);
-		ft_putstr("ERROR\n");
-		return (NULL);
-	}
-	ft_putstr("TEST 2\n");
 	while (y < 4)
 	{
 		while (x < 4)
@@ -86,12 +76,6 @@ t_block	*shapes_to_top_left(t_block *block, t_var *var)
 		x = 0;
 		y++;
 	}
-	ft_putstr("Smallest y: ");
-	ft_putnbr(smallest_y);
-	ft_putchar('\n');
-	ft_putstr("Smallest x: ");
-	ft_putnbr(smallest_x);
-	ft_putchar('\n');
 	y = 0;
 	while (y < 4)
 	{
@@ -99,19 +83,14 @@ t_block	*shapes_to_top_left(t_block *block, t_var *var)
 		{
 			if (block->arr[y][x] != '.')
 			{
-				temp->arr[y][x] = '.';
-				temp->arr[y - smallest_y][x - smallest_x] = var->letter;
+				block->arr[y][x] = '.';
+				block->arr[y - smallest_y][x - smallest_x] = var->letter;
 			}
-			else
-				temp->arr[y][x] = '.';
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	ft_putstr("TEST 4\n");
-	free (block);
-	return (temp);
 }
 
 t_block	*place_values(char **arr, t_block *temp, t_var *var)
@@ -130,9 +109,7 @@ t_block	*place_values(char **arr, t_block *temp, t_var *var)
 	var->y++;
 	if (!(arr[var->i][var->x]))
 	{
-		print_shape(temp);
-		temp = shapes_to_top_left(temp, var);
-		print_shape(temp);
+		shapes_to_top_left(temp, var);
 		var->letter++;
 		next = (t_block *)malloc(sizeof(t_block));
 		temp->next = next;
@@ -160,8 +137,8 @@ t_block	*char2list(char **arr)
 	t_block	*head;
 	t_var	*var;
 
-	/*if (!(check_valid(arr)))
-		ft_putstr("Kaak\n");*/
+	if (!(check_valid(arr)))
+		ft_putstr("Kaak\n");
 	var = set_values();
 	temp = (t_block *)malloc(sizeof(t_block));
 	head = temp;
